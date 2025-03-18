@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính diện tích hình chữ nhật</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #e3f2fd;
+        }
+
+        .container {
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Tính Diện Tích Hình Chữ Nhật</h1>
+        <input type="number" id="length" placeholder="Nhập chiều dài...">
+        <input type="number" id="width" placeholder="Nhập chiều rộng...">
+        <button class="btn" onclick="calculateArea()">Tính Diện Tích</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateArea() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const result = document.getElementById('result');
+
+            if (isNaN(length) || isNaN(width)) {
+                result.innerHTML = "Vui lòng nhập số hợp lệ.";
+                return;
+            }
+
+            if (length <= 0 || width <= 0) {
+                result.innerHTML = "Chiều dài và chiều rộng phải là số dương.";
+                return;
+            }
+
+            if (length < width) {
+                result.innerHTML = "Chiều dài phải lớn hơn hoặc bằng chiều rộng.";
+                return;
+            }
+
+            const area = length * width;
+            result.innerHTML = `Diện tích hình chữ nhật là: ${area}`;
+
+            if (length === width) {
+                result.innerHTML += "<br>Bất ngờ chưa, đây là hình vuông!!!";
+            }
+        }
+    </script>
+</body>
+
+</html>
